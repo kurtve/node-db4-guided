@@ -8,6 +8,7 @@ const port = process.env.PORT || 4000
 server.use(helmet())
 server.use(express.json())
 
+
 server.get("/api/species", async (req, res, next) => {
   try {
     // get all species from the database
@@ -15,7 +16,8 @@ server.get("/api/species", async (req, res, next) => {
   } catch(err) {
     next(err)
   }
-})
+});
+
 
 server.get("/api/animals", async (req, res, next) => {
   try {
@@ -29,7 +31,8 @@ server.get("/api/animals", async (req, res, next) => {
   } catch(err) {
     next(err)
   }
-})
+});
+
 
 server.post("/api/animals", async (req, res, next) => {
   try {
@@ -45,7 +48,7 @@ server.post("/api/animals", async (req, res, next) => {
   } catch(err) {
     next(err)
   }
-})
+});
 
 
 server.delete("/api/species/:id", async (req, res, next) => {
@@ -65,7 +68,8 @@ server.delete("/api/species/:id", async (req, res, next) => {
   } catch(err) {
     next(err)
   }
-})
+});
+
 
 server.use((err, req, res, next) => {
   console.log("Error:", err)
@@ -73,8 +77,9 @@ server.use((err, req, res, next) => {
   res.status(500).json({
     message: "Something went wrong",
   })
-})
+});
+
 
 server.listen(port, () => {
   console.log(`Listening on http://localhost:${port}`)
-})
+});
